@@ -133,28 +133,16 @@
       <h2>Uygulamalar</h2>
       <div class="grid">
         <article class="item card">
-          <h3>Öğretmen Plan • AI</h3>
+          <h3><a href="ogretmen-plan.html">Öğretmen Plan • AI</a></h3>
           <p>Yeni Maarif Modeli ile uyumlu yıllık/haftalık plan, ölçme-değerlendirme ve içerik yönetimi. AI destekli öneriler.</p>
-          <div class="badges" style="margin-top:12px">
-            <a class="btn" href="#" aria-label="Google Play sayfası">Google Play</a>
-            <a class="btn" href="#" aria-label="App Store sayfası">App Store</a>
-          </div>
         </article>
         <article class="item card">
-          <h3>Okul Nöbet • Planlayıcı</h3>
+          <h3><a href="okul-nobet.html">Okul Nöbet • Planlayıcı</a></h3>
           <p>Öğretmen-nöbet çizelgesi, kurallara uygun otomasyon, manuel düzenleme ve PDF dışa aktarma.</p>
-          <div class="badges" style="margin-top:12px">
-            <a class="btn" href="#">Google Play</a>
-            <a class="btn" href="#">App Store</a>
-          </div>
         </article>
         <article class="item card">
-          <h3>StudyBuddy • AI</h3>
+          <h3><a href="studybuddy.html">StudyBuddy • AI</a></h3>
           <p>Öğrenciler için akıllı çalışma koçu: hedef, program, tekrar ve mini testlerle kişisel geri bildirim.</p>
-          <div class="badges" style="margin-top:12px">
-            <a class="btn" href="#">Google Play</a>
-            <a class="btn" href="#">App Store</a>
-          </div>
         </article>
       </div>
     </section>
@@ -194,12 +182,22 @@
           <p style="margin:0 0 10px">GitHub: <a href="https://github.com/bagerxx" target="_blank" rel="noopener">@bagerxx</a></p>
           <p style="margin:0">Google Play: <a href="#google-play">B&Ser Studio</a> • App Store: <a href="#app-store">B&Ser</a></p>
         </div>
-        <form class="card" onsubmit="event.preventDefault(); alert('Teşekkürler! Mesaj alındı. (Statik demo)')">
+        <form class="card" id="contact-form">
           <label for="ad" style="display:block;margin-bottom:6px;color:var(--muted)">Adınız</label>
-          <input id="ad" name="ad" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px" />
+          <input id="ad" name="name" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px" />
+
+          <label for="email" style="display:block;margin-bottom:6px;color:var(--muted)">E‑posta</label>
+          <input id="email" type="email" name="email" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px" />
+
           <label for="mesaj" style="display:block;margin-bottom:6px;color:var(--muted)">Mesaj</label>
-          <textarea id="mesaj" name="mesaj" rows="4" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px"></textarea>
-          <button class="btn" type="submit">Gönder</button>
+          <textarea id="mesaj" name="message" rows="4" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px"></textarea>
+
+          <!-- Optional extras for Formspree -->
+          <input type="hidden" name="_subject" value="Yeni ileti: bser.studio" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <button class="btn" type="submit" id="submit-btn">Gönder</button>
+          <div id="form-status" style="margin-top:10px;color:var(--muted)"></div>
         </form>
       </div>
     </section>
@@ -215,6 +213,46 @@
   <script>
     // Küçük UX dokunuşu
     document.getElementById('yil').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+  // ---- Basit Formspree entegrasyonu (GitHub Pages için sunucusuz) ----
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  // TODO: Kendi Formspree form ID'nizi burada değiştirin
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    submitBtn.disabled = true;
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+
+      if (res.ok) {
+        form.reset();
+        statusEl.style.color = '#10b981';
+        statusEl.textContent = 'Teşekkürler! Mesajınız alındı. En kısa sürede dönüş yapılacaktır.';
+      } else {
+        const err = await res.json().catch(() => ({}));
+        statusEl.style.color = '#ef4444';
+        statusEl.textContent = err?.errors?.[0]?.message || 'Gönderim sırasında bir sorun oluştu. Lütfen daha sonra tekrar deneyin.';
+      }
+    } catch (error) {
+      statusEl.style.color = '#ef4444';
+      statusEl.textContent = 'Ağ hatası: İnternet bağlantınızı kontrol edin.';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
   </script>
 
   <!-- Schema.org JSON-LD -->
