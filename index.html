@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>B&Ser Studio — Ürünler ve İletişim</title>
+  <title>B&Ser Studio — Mobil App Developer</title>
   <meta name="description" content="B&Ser Studio, öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar üretir." />
   <meta name="theme-color" content="#0a84ff" />
   <!-- Open Graph -->
@@ -11,10 +11,15 @@
   <meta property="og:description" content="Öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bagerxx.github.io/" />
-  <!-- İletişim formu için uzak API endpoint’i (gerekirse sadece bu meta’yı güncelleyin) -->
-  <meta name="contact-endpoint" content="https://finance-app-production-1c8d.up.railway.app/contact" />
-  <!-- Not: Kendi banner görselinizi barındırınca bunu güncelleyebilirsiniz -->
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=B%26Ser+Studio" />
+  <!-- OG/Twitter görselleri: projedeki yerel görsel -->
+  <meta property="og:image" content="images/image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="images/image.png" />
+  
+  <!-- Favicon ve uygulama simgeleri -->
+  <link rel="icon" href="images/favicon.svg?v=5" type="image/svg+xml" sizes="any" />
+  <link rel="shortcut icon" href="images/favicon.svg?v=5" type="image/svg+xml" sizes="any" />
+  <link rel="apple-touch-icon" href="images/image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -39,11 +44,22 @@
       background: radial-gradient(1200px 600px at 10% 10%, rgba(56,189,248,.15), transparent 60%),
                   radial-gradient(1200px 600px at 90% -10%, rgba(14,165,233,.25), transparent 60%);
       border-bottom:1px solid #1f2937;
+      /* Sabit navbar yüksekliğini telafi eder */
+      padding-top:96px;
     }
     .container{max-width:1080px;margin:0 auto;padding:24px}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
-    .logo-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#001028;font-weight:900}
+  /* Üst navbar: sayfa boyunca sabit kalsın */
+  .nav{
+    position:fixed; top:0; left:50%; transform:translateX(-50%);
+    width:calc(100% - 48px); max-width:1080px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    z-index:1000;
+    background:rgba(11,18,38,.8);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    border:1px solid var(--ring); border-radius:12px;
+  }
+  .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
+  .logo-mark{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;min-height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#001028;font-weight:900;white-space:nowrap}
   .tag{font-size:12px;color:var(--muted);border:1px solid var(--ring);padding:4px 8px;border-radius:999px}
   nav a{color:var(--txt);font-size:14px;padding:8px 10px;border-radius:10px;border:1px solid transparent}
   nav a:hover{border-color:var(--ring)}
@@ -55,7 +71,8 @@
     .btn:focus-visible{outline:2px solid var(--brand)}
     .btn .sub{display:block;font-size:12px;color:var(--muted);margin-top:2px}
 
-    .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:18px}
+  .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:18px}
+  .card.media{padding:0}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .grid.two{grid-template-columns:repeat(2,1fr)}
 
@@ -63,6 +80,11 @@
     .section h2{font-size:28px;margin:0 0 16px}
     .apps .item h3{margin:8px 0 6px;font-size:18px}
     .apps .item p{margin:0;color:var(--muted);font-size:14px}
+    /* Başlık ve ikon yan yana */
+  .title-row{display:flex;align-items:center;gap:10px;margin:8px 0 6px}
+  .title-row h3{margin:0;font-size:18px}
+  .title-row h2{margin:0;font-size:28px}
+    .title-row img{width:36px;height:36px;border-radius:8px;display:block}
 
   .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
   .pill{border:1px solid var(--ring);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:13px}
@@ -73,14 +95,16 @@
       .hero{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
     }
+    /* Sabit navbar altında anchor'a atlayınca içerik gizlenmesin */
+    section[id]{scroll-margin-top:96px}
+    #iletisim{scroll-margin-top:96px}
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div class="logo" aria-label="B&Ser Studio logosu">
-        <div class="logo-mark">B&</div>
-        <div>B&Ser <span style="font-weight:600;color:var(--muted)">Studio</span></div>
+        <div class="logo-mark">B&Ser Studio</div>
       </div>
       <nav>
         <a href="#projeler">Projeler</a>
@@ -92,29 +116,18 @@
     <div class="container hero">
       <div>
         <h1>Sade, hızlı ve faydalı eğitim odaklı uygulamalar</h1>
-        <p>Şu an 3 proje: Plan, Kolay Bütçe Yönetimi ve Soru Okulu. Aşağıdan kartlara tıklayarak kısa tanıtımı görün; ayrı sayfa oluşturmadan, bağlantı (anchor) ile detaylara inin.</p>
+        <p>Şu an 3 proje: Plan Kolay, Bütçe Yönetimi ve Soru Okulu. Aşağıdan kartlara tıklayarak bilgi alabilirsiniz.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <a class="btn" href="#projeler" aria-label="Projeleri gör">
             <strong>Projeleri Gör</strong>
           </a>
           <a class="btn" href="mailto:baristokas@icloud.com" aria-label="E-posta ile iletişim">
             <strong>E-posta Gönder</strong>
-            <span class="sub">baristokas@icloud.com</span>
           </a>
         </div>
       </div>
-      <div class="card" role="img" aria-label="Tanıtım görseli">
-        <svg viewBox="0 0 600 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px; background:linear-gradient(135deg,#0ea5e9, #38bdf8)">
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#0ea5e9"/>
-              <stop offset="100%" stop-color="#38bdf8"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="600" height="360" fill="url(#g)"/>
-          <text x="50" y="150" fill="#001028" font-family="Inter,system-ui" font-size="56" font-weight="800">B&Ser Studio</text>
-          <text x="50" y="210" fill="#001028" font-family="Inter,system-ui" font-size="18" opacity="0.88">Eğitim • Yapay Zekâ • Uygulamalar</text>
-        </svg>
+      <div class="card media" role="img" aria-label="Tanıtım görseli">
+        <img src="images/profilj.jpg" alt="B&Ser Studio görseli" style="width:100%;height:100%;object-fit:cover;border-radius:12px" loading="lazy" />
       </div>
     </div>
   </header>
@@ -124,35 +137,53 @@
       <h2>Projeler</h2>
       <div class="grid">
         <article class="item card">
-          <h3>Plan</h3>
+          <div class="title-row">
+            <!-- İkon eklemek için: <img src="images/plan-kolay-ikon.png" alt="Plan Kolay ikonu" loading="lazy" /> -->
+            <h3>Plan Kolay</h3>
+          </div>
           <p>Yeni Maarif Modeli ile uyumlu planlama: yıllık/haftalık plan, ölçme-değerlendirme ve içerik yönetimi. AI destekli öneriler.</p>
           <div style="display:flex;gap:10px;margin-top:10px">
             <a class="btn" href="#plan" aria-label="Plan detayına git"><strong>Tanıtımı Gör</strong></a>
             <a class="btn" href="mailto:baristokas@icloud.com?subject=Plan%20uygulaması%20hakkında" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
           </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <span class="btn" aria-disabled="true" title="Yakında" style="opacity:.6;pointer-events:none"><strong>Site (yakında)</strong></span>
+            </div>
         </article>
         <article class="item card">
-          <h3>Kolay Bütçe Yönetimi</h3>
+            <div class="title-row">
+              <img src="images/bu%CC%88tce%20yonetim%20ikonu.png" alt="Bütçe Yönetimi ikonu" loading="lazy" />
+              <h3>Bütçe Yönetimi</h3>
+            </div>
           <p>Kişisel ve aile bütçesi için sade takip: gelir‑gider, kategori analizi, hedef ve uyarılar. Offline öncelikli.</p>
           <div style="display:flex;gap:10px;margin-top:10px">
             <a class="btn" href="#butce" aria-label="Kolay Bütçe detayına git"><strong>Tanıtımı Gör</strong></a>
             <a class="btn" href="mailto:baristokas@icloud.com?subject=Kolay%20B%C3%BCt%C3%A7e%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
           </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <a class="btn" href="https://finance-app-production-1c8d.up.railway.app/" target="_blank" rel="noopener" aria-label="Bütçe Yönetimi uygulamasını aç"><strong>Siteyi Aç</strong></a>
+            </div>
         </article>
         <article class="item card">
-          <h3>Soru Okulu</h3>
+          <div class="title-row">
+            <!-- İkon eklemek için: <img src="images/soru-okulu-ikon.png" alt="Soru Okulu ikonu" loading="lazy" /> -->
+            <h3>Soru Okulu</h3>
+          </div>
           <p>Öğrenciler için akıllı çalışma koçu: hedef, program, tekrar döngüsü ve mini testlerle kişisel geri bildirim.</p>
           <div style="display:flex;gap:10px;margin-top:10px">
             <a class="btn" href="#soru-okulu" aria-label="Soru Okulu detayına git"><strong>Tanıtımı Gör</strong></a>
             <a class="btn" href="mailto:baristokas@icloud.com?subject=Soru%20Okulu%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
           </div>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <span class="btn" aria-disabled="true" title="Yakında" style="opacity:.6;pointer-events:none"><strong>Site (yakında)</strong></span>
+            </div>
         </article>
       </div>
     </section>
 
     <!-- Sayfa içi (anchor) detaylar: Ayrı sayfa oluşturulmadan gösterilir -->
     <section class="section container" id="plan">
-      <h2>Plan — Kısa Tanıtım</h2>
+      <h2>Plan Kolay— Kısa Tanıtım</h2>
       <div class="grid two">
         <div class="card">
           <p>Öğretmenlerin pratik plan üretimi için tasarlandı. Yıllık/haftalık plan şablonları, kazanım eşleştirme ve ölçme‑değerlendirme araçları içerir.</p>
@@ -168,7 +199,10 @@
     </section>
 
     <section class="section container" id="butce">
-      <h2>Kolay Bütçe Yönetimi — Kısa Tanıtım</h2>
+      <div class="title-row">
+        <img src="images/bu%CC%88tce%20yonetim%20ikonu.png" alt="Bütçe Yönetimi ikonu" loading="lazy" />
+        <h2>Bütçe Yönetimi — Kısa Tanıtım</h2>
+      </div>
       <div class="grid two">
         <div class="card">
           <p>Gelir‑giderinizi zahmetsiz takip edin. Kategoriler, hedefler ve basit grafiklerle net görünürlük sağlayın.</p>
@@ -200,36 +234,20 @@
     </section>
 
     <section class="section container" id="hakkinda">
-      <h2>Hakkında</h2>
-      <div class="grid">
+      <div class="grid two">
         <div class="card">
-          <p>Barış (B&Ser Studio), öğretmen kökenli bağımsız geliştiricidir. Odak: eğitim teknolojileri, yapay zekâ ve yalın kullanıcı deneyimleri.</p>
+          <h2>Hakkında</h2>
+          <p>B&Ser Studio, öğretmen kökenli bağımsız geliştiricidir. Odak: eğitim teknolojileri, yapay zekâ ve yalın kullanıcı deneyimleri.</p>
           <p style="color:var(--muted)">Stack: React/React Native, Next.js, NestJS, Prisma, PostgreSQL, Python.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section container" id="iletisim">
-      <h2>İletişim</h2>
-      <div class="grid">
         <div class="card">
+          <h2 id="iletisim">İletişim</h2>
           <p style="margin:0 0 10px">E‑posta: <a href="mailto:baristokas@icloud.com">baristokas@icloud.com</a></p>
-          <p style="margin:0 0 10px">GitHub: <a href="https://github.com/bagerxx" target="_blank" rel="noopener">@bagerxx</a></p>
-          <p style="margin:0;color:var(--muted)">Tercih ederseniz aşağıdaki formu da kullanabilirsiniz.</p>
+          <p style="margin:0 0 16px">GitHub: <a href="https://github.com/bagerxx" target="_blank" rel="noopener">@bagerxx</a></p>
+          <a class="btn" href="mailto:baristokas@icloud.com?subject=Merhaba" aria-label="E-posta ile iletişim">
+            <strong>E‑posta Gönder</strong>
+          </a>
         </div>
-        <form class="card" id="contact-form">
-          <label for="ad" style="display:block;margin-bottom:6px;color:var(--muted)">Adınız</label>
-          <input id="ad" name="name" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px" />
-
-          <label for="email" style="display:block;margin-bottom:6px;color:var(--muted)">E‑posta</label>
-          <input id="email" type="email" name="email" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px" />
-
-          <label for="mesaj" style="display:block;margin-bottom:6px;color:var(--muted)">Mesaj</label>
-          <textarea id="mesaj" name="message" rows="4" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px"></textarea>
-
-          <button class="btn" type="submit" id="submit-btn">Gönder</button>
-          <div id="form-status" style="margin-top:10px;color:var(--muted)"></div>
-        </form>
       </div>
     </section>
   </main>
@@ -246,52 +264,7 @@
     document.getElementById('yil').textContent = new Date().getFullYear();
   </script>
 
-  <script>
-  // Basit form gönderimi — sonradan yazacağımız endpoint’e gönderim
-  // Not: GitHub Pages statik olduğu için bu endpoint ayrı bir yerde (ör. Cloudflare Workers/Netlify Functions) barındırılmalıdır.
-  const form = document.getElementById('contact-form');
-  const statusEl = document.getElementById('form-status');
-  const submitBtn = document.getElementById('submit-btn');
-
-  // API endpoint’i: head içindeki meta’dan okunur; yoksa aşağıdaki varsayılan kullanılır
-  const API_ENDPOINT = document.querySelector('meta[name="contact-endpoint"]')?.content || 'https://finance-app-production-1c8d.up.railway.app/contact';
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    statusEl.textContent = '';
-    submitBtn.disabled = true;
-
-    try {
-      const payload = {
-        name: document.getElementById('ad')?.value?.trim() || '',
-        email: document.getElementById('email')?.value?.trim() || '',
-        message: document.getElementById('mesaj')?.value?.trim() || '',
-        origin: 'bagerxx.github.io'
-      };
-
-      const res = await fetch(API_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        form.reset();
-        statusEl.style.color = '#10b981';
-        statusEl.textContent = 'Teşekkürler! Mesajınız alındı. En kısa sürede dönüş yapılacaktır.';
-      } else {
-        const err = await res.json().catch(() => ({}));
-        statusEl.style.color = '#ef4444';
-        statusEl.textContent = err?.error || 'Gönderim sırasında bir sorun oluştu. Lütfen daha sonra tekrar deneyin.';
-      }
-    } catch (error) {
-      statusEl.style.color = '#ef4444';
-      statusEl.textContent = 'Ağ hatası: İnternet bağlantınızı kontrol edin.';
-    } finally {
-      submitBtn.disabled = false;
-    }
-  });
-  </script>
+  
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
