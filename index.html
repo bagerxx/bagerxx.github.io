@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>B&Ser Studio – Geliştirici Sayfası</title>
+  <title>B&Ser Studio — Ürünler ve İletişim</title>
   <meta name="description" content="B&Ser Studio, öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar üretir." />
   <meta name="theme-color" content="#0a84ff" />
   <!-- Open Graph -->
@@ -11,7 +11,9 @@
   <meta property="og:description" content="Öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bagerxx.github.io/" />
-  <!-- Replace with your real banner if you host one -->
+  <!-- İletişim formu için uzak API endpoint’i (gerekirse sadece bu meta’yı güncelleyin) -->
+  <meta name="contact-endpoint" content="https://finance-app-production-1c8d.up.railway.app/contact" />
+  <!-- Not: Kendi banner görselinizi barındırınca bunu güncelleyebilirsiniz -->
   <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=B%26Ser+Studio" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,29 +41,31 @@
       border-bottom:1px solid #1f2937;
     }
     .container{max-width:1080px;margin:0 auto;padding:24px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
     .logo-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#001028;font-weight:900}
-    .tag{font-size:12px;color:var(--muted);border:1px solid var(--ring);padding:4px 8px;border-radius:999px}
+  .tag{font-size:12px;color:var(--muted);border:1px solid var(--ring);padding:4px 8px;border-radius:999px}
+  nav a{color:var(--txt);font-size:14px;padding:8px 10px;border-radius:10px;border:1px solid transparent}
+  nav a:hover{border-color:var(--ring)}
 
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:42px 24px 64px}
-    .hero h1{font-size:44px;line-height:1.1;margin:0 0 14px}
-    .hero p{color:var(--muted);margin:0 0 22px;font-size:18px}
-    .badges{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 0}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--ring);background:#0b1226cc;color:var(--txt);backdrop-filter:blur(6px)}
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:42px 24px 56px}
+  .hero h1{font-size:42px;line-height:1.1;margin:0 0 14px}
+  .hero p{color:var(--muted);margin:0 0 22px;font-size:18px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--ring);background:#0b1226cc;color:var(--txt);backdrop-filter:blur(6px)}
     .btn:focus-visible{outline:2px solid var(--brand)}
     .btn .sub{display:block;font-size:12px;color:var(--muted);margin-top:2px}
 
     .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:18px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
 
     .section{padding:56px 24px}
     .section h2{font-size:28px;margin:0 0 16px}
     .apps .item h3{margin:8px 0 6px;font-size:18px}
     .apps .item p{margin:0;color:var(--muted);font-size:14px}
 
-    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
-    .pill{border:1px solid var(--ring);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:13px}
+  .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
+  .pill{border:1px solid var(--ring);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:13px}
 
     footer{padding:36px 24px;border-top:1px solid var(--ring);color:var(--muted)}
 
@@ -78,37 +82,25 @@
         <div class="logo-mark">B&</div>
         <div>B&Ser <span style="font-weight:600;color:var(--muted)">Studio</span></div>
       </div>
-      <div class="tag">Bağımsız geliştirici • Eğitim + Yapay Zekâ</div>
+      <nav>
+        <a href="#projeler">Projeler</a>
+        <a href="#hakkinda">Hakkında</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
     </div>
 
     <div class="container hero">
       <div>
-        <h1>Eğitim ve yapay zekâyı buluşturan <span style="color:var(--brand-2)">mobil deneyimler</span></h1>
-        <p>B&Ser Studio, öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar geliştirir. Tek kişilik ama iddialı bir stüdyo.</p>
-        <div class="badges">
-          <a class="btn" href="#google-play" aria-label="Google Play geliştirici sayfası">
-            <div>
-              <strong>Google Play</strong>
-              <span class="sub">Geliştirici sayfam</span>
-            </div>
+        <h1>Sade, hızlı ve faydalı eğitim odaklı uygulamalar</h1>
+        <p>Şu an 3 proje: Plan, Kolay Bütçe Yönetimi ve Soru Okulu. Aşağıdan kartlara tıklayarak kısa tanıtımı görün; ayrı sayfa oluşturmadan, bağlantı (anchor) ile detaylara inin.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="#projeler" aria-label="Projeleri gör">
+            <strong>Projeleri Gör</strong>
           </a>
-          <a class="btn" href="#app-store" aria-label="App Store geliştirici profili">
-            <div>
-              <strong>App Store</strong>
-              <span class="sub">Geliştirici profili</span>
-            </div>
+          <a class="btn" href="mailto:baristokas@icloud.com" aria-label="E-posta ile iletişim">
+            <strong>E-posta Gönder</strong>
+            <span class="sub">baristokas@icloud.com</span>
           </a>
-          <a class="btn" href="#iletisim" aria-label="İletişim">
-            <div>
-              <strong>İletişim</strong>
-              <span class="sub">Mail / Sosyal</span>
-            </div>
-          </a>
-        </div>
-        <div class="kpis">
-          <div class="pill">React • RN • Next.js • Nest</div>
-          <div class="pill">Prisma • PostgreSQL</div>
-          <div class="pill">Python • AI</div>
         </div>
       </div>
       <div class="card" role="img" aria-label="Tanıtım görseli">
@@ -120,30 +112,90 @@
             </linearGradient>
           </defs>
           <rect x="0" y="0" width="600" height="360" fill="url(#g)"/>
-          <text x="50" y="150" fill="#001028" font-family="Inter,system-ui" font-size="64" font-weight="800">B&Ser</text>
-          <text x="50" y="210" fill="#001028" font-family="Inter,system-ui" font-size="28" opacity="0.85">Studio</text>
-          <text x="50" y="260" fill="#001028" font-family="Inter,system-ui" font-size="16" opacity="0.8">AI • Education • Apps</text>
+          <text x="50" y="150" fill="#001028" font-family="Inter,system-ui" font-size="56" font-weight="800">B&Ser Studio</text>
+          <text x="50" y="210" fill="#001028" font-family="Inter,system-ui" font-size="18" opacity="0.88">Eğitim • Yapay Zekâ • Uygulamalar</text>
         </svg>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="section container apps" id="uygulamalar">
-      <h2>Uygulamalar</h2>
+    <section class="section container apps" id="projeler">
+      <h2>Projeler</h2>
       <div class="grid">
         <article class="item card">
-          <h3><a href="ogretmen-plan.html">Öğretmen Plan • AI</a></h3>
-          <p>Yeni Maarif Modeli ile uyumlu yıllık/haftalık plan, ölçme-değerlendirme ve içerik yönetimi. AI destekli öneriler.</p>
+          <h3>Plan</h3>
+          <p>Yeni Maarif Modeli ile uyumlu planlama: yıllık/haftalık plan, ölçme-değerlendirme ve içerik yönetimi. AI destekli öneriler.</p>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <a class="btn" href="#plan" aria-label="Plan detayına git"><strong>Tanıtımı Gör</strong></a>
+            <a class="btn" href="mailto:baristokas@icloud.com?subject=Plan%20uygulaması%20hakkında" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
+          </div>
         </article>
         <article class="item card">
-          <h3><a href="okul-nobet.html">Okul Nöbet • Planlayıcı</a></h3>
-          <p>Öğretmen-nöbet çizelgesi, kurallara uygun otomasyon, manuel düzenleme ve PDF dışa aktarma.</p>
+          <h3>Kolay Bütçe Yönetimi</h3>
+          <p>Kişisel ve aile bütçesi için sade takip: gelir‑gider, kategori analizi, hedef ve uyarılar. Offline öncelikli.</p>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <a class="btn" href="#butce" aria-label="Kolay Bütçe detayına git"><strong>Tanıtımı Gör</strong></a>
+            <a class="btn" href="mailto:baristokas@icloud.com?subject=Kolay%20B%C3%BCt%C3%A7e%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
+          </div>
         </article>
         <article class="item card">
-          <h3><a href="studybuddy.html">StudyBuddy • AI</a></h3>
-          <p>Öğrenciler için akıllı çalışma koçu: hedef, program, tekrar ve mini testlerle kişisel geri bildirim.</p>
+          <h3>Soru Okulu</h3>
+          <p>Öğrenciler için akıllı çalışma koçu: hedef, program, tekrar döngüsü ve mini testlerle kişisel geri bildirim.</p>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <a class="btn" href="#soru-okulu" aria-label="Soru Okulu detayına git"><strong>Tanıtımı Gör</strong></a>
+            <a class="btn" href="mailto:baristokas@icloud.com?subject=Soru%20Okulu%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
+          </div>
         </article>
+      </div>
+    </section>
+
+    <!-- Sayfa içi (anchor) detaylar: Ayrı sayfa oluşturulmadan gösterilir -->
+    <section class="section container" id="plan">
+      <h2>Plan — Kısa Tanıtım</h2>
+      <div class="grid two">
+        <div class="card">
+          <p>Öğretmenlerin pratik plan üretimi için tasarlandı. Yıllık/haftalık plan şablonları, kazanım eşleştirme ve ölçme‑değerlendirme araçları içerir.</p>
+        </div>
+        <div class="card">
+          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
+            <li>Yeni Maarif Modeli ile uyumlu</li>
+            <li>AI destekli içerik önerileri</li>
+            <li>PDF/Paylaşım seçenekleri</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="butce">
+      <h2>Kolay Bütçe Yönetimi — Kısa Tanıtım</h2>
+      <div class="grid two">
+        <div class="card">
+          <p>Gelir‑giderinizi zahmetsiz takip edin. Kategoriler, hedefler ve basit grafiklerle net görünürlük sağlayın.</p>
+        </div>
+        <div class="card">
+          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
+            <li>Hızlı kayıt ve akıllı kategoriler</li>
+            <li>Offline öncelikli deneyim</li>
+            <li>Uyarılar ve hedef takibi</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="soru-okulu">
+      <h2>Soru Okulu — Kısa Tanıtım</h2>
+      <div class="grid two">
+        <div class="card">
+          <p>Kişiselleştirilmiş çalışma koçu: düzenli tekrar, mini sınavlar ve hedef odaklı geri bildirim.</p>
+        </div>
+        <div class="card">
+          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
+            <li>Konulara göre hedef belirleme</li>
+            <li>Adaptif mini testler</li>
+            <li>Gelişim raporları</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -151,25 +203,8 @@
       <h2>Hakkında</h2>
       <div class="grid">
         <div class="card">
-          <p>Barış (B&Ser Studio), öğretmen kökenli bağımsız bir geliştiricidir. Odak; eğitim teknolojileri, yapay zekâ ve kullanıcı odaklı mobil deneyimlerdir.</p>
-          <p>Stack: React/React Native, Next.js, NestJS, Prisma, PostgreSQL, Python. Tasarımda yalınlık ve performans önceliklidir.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 8px">Vizyon</h3>
-          <p>Öğrenmeyi herkes için erişilebilir ve etkili kılan, AI destekli, yalın ve güvenilir ürünler üretmek.</p>
-          <ul style="margin:10px 0 0 18px;color:var(--muted);font-size:14px">
-            <li>Öğretmen ve öğrenciye gerçek fayda</li>
-            <li>Veri gizliliği ve etik AI</li>
-            <li>Kullanıcı deneyiminde sadelik</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 8px">Durum</h3>
-          <p>Yeni projeler yolda. İşbirliği ve pilot okul/öğretmen ortaklıkları için ulaşın.</p>
-          <div class="kpis">
-            <span class="pill">Beta başvurusu açık</span>
-            <span class="pill">TR & Global</span>
-          </div>
+          <p>Barış (B&Ser Studio), öğretmen kökenli bağımsız geliştiricidir. Odak: eğitim teknolojileri, yapay zekâ ve yalın kullanıcı deneyimleri.</p>
+          <p style="color:var(--muted)">Stack: React/React Native, Next.js, NestJS, Prisma, PostgreSQL, Python.</p>
         </div>
       </div>
     </section>
@@ -178,9 +213,9 @@
       <h2>İletişim</h2>
       <div class="grid">
         <div class="card">
-          <p style="margin:0 0 10px">E-posta: <a href="mailto:hello@bser.studio">hello@bser.studio</a> (örnek)</p>
+          <p style="margin:0 0 10px">E‑posta: <a href="mailto:baristokas@icloud.com">baristokas@icloud.com</a></p>
           <p style="margin:0 0 10px">GitHub: <a href="https://github.com/bagerxx" target="_blank" rel="noopener">@bagerxx</a></p>
-          <p style="margin:0">Google Play: <a href="#google-play">B&Ser Studio</a> • App Store: <a href="#app-store">B&Ser</a></p>
+          <p style="margin:0;color:var(--muted)">Tercih ederseniz aşağıdaki formu da kullanabilirsiniz.</p>
         </div>
         <form class="card" id="contact-form">
           <label for="ad" style="display:block;margin-bottom:6px;color:var(--muted)">Adınız</label>
@@ -192,10 +227,6 @@
           <label for="mesaj" style="display:block;margin-bottom:6px;color:var(--muted)">Mesaj</label>
           <textarea id="mesaj" name="message" rows="4" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--ring);background:#0b1226;color:var(--txt);margin-bottom:10px"></textarea>
 
-          <!-- Optional extras for Formspree -->
-          <input type="hidden" name="_subject" value="Yeni ileti: bser.studio" />
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
           <button class="btn" type="submit" id="submit-btn">Gönder</button>
           <div id="form-status" style="margin-top:10px;color:var(--muted)"></div>
         </form>
@@ -206,7 +237,7 @@
   <footer class="container">
     <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
       <div>© <span id="yil"></span> B&Ser Studio</div>
-      <div style="color:var(--muted)">“B&Ser Studio, öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar üretir.”</div>
+      <div style="color:var(--muted)">Eğitim ve yapay zekayı buluşturan yalın ürünler.</div>
     </div>
   </footer>
 
@@ -216,25 +247,32 @@
   </script>
 
   <script>
-  // ---- Basit Formspree entegrasyonu (GitHub Pages için sunucusuz) ----
+  // Basit form gönderimi — sonradan yazacağımız endpoint’e gönderim
+  // Not: GitHub Pages statik olduğu için bu endpoint ayrı bir yerde (ör. Cloudflare Workers/Netlify Functions) barındırılmalıdır.
   const form = document.getElementById('contact-form');
   const statusEl = document.getElementById('form-status');
   const submitBtn = document.getElementById('submit-btn');
 
-  // TODO: Kendi Formspree form ID'nizi burada değiştirin
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
+  // API endpoint’i: head içindeki meta’dan okunur; yoksa aşağıdaki varsayılan kullanılır
+  const API_ENDPOINT = document.querySelector('meta[name="contact-endpoint"]')?.content || 'https://finance-app-production-1c8d.up.railway.app/contact';
 
-  form.addEventListener('submit', async (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     statusEl.textContent = '';
     submitBtn.disabled = true;
 
     try {
-      const data = new FormData(form);
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const payload = {
+        name: document.getElementById('ad')?.value?.trim() || '',
+        email: document.getElementById('email')?.value?.trim() || '',
+        message: document.getElementById('mesaj')?.value?.trim() || '',
+        origin: 'bagerxx.github.io'
+      };
+
+      const res = await fetch(API_ENDPOINT, {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
       if (res.ok) {
@@ -244,7 +282,7 @@
       } else {
         const err = await res.json().catch(() => ({}));
         statusEl.style.color = '#ef4444';
-        statusEl.textContent = err?.errors?.[0]?.message || 'Gönderim sırasında bir sorun oluştu. Lütfen daha sonra tekrar deneyin.';
+        statusEl.textContent = err?.error || 'Gönderim sırasında bir sorun oluştu. Lütfen daha sonra tekrar deneyin.';
       }
     } catch (error) {
       statusEl.style.color = '#ef4444';
