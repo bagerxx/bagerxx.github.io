@@ -140,6 +140,19 @@
     .tag-row{display:flex;gap:8px;flex-wrap:wrap;}
     .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px;}
 
+    .showcase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px;}
+    .showcase-card{
+      background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px 14px 16px;
+      box-shadow:0 14px 44px rgba(15,23,42,.1);display:grid;gap:10px;
+    }
+    .showcase-card h3{margin:4px 0;font-size:20px;}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:10px;background:rgba(255,255,255,.8);border:1px solid var(--line);font-weight:600;font-size:12px;letter-spacing:.01em;color:var(--muted);}
+    .showcase-img{
+      width:100%;border-radius:14px;height:180px;overflow:hidden;
+      background-size:cover;background-position:center;background-repeat:no-repeat;
+      border:1px solid var(--line);box-shadow:0 12px 32px rgba(15,23,42,.08);
+    }
+
     .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px;}
     .feature-card{
       background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;
@@ -155,10 +168,23 @@
     footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 
     @media (max-width:900px){
-      .nav-inner{align-items:flex-start;flex-direction:column;}
-      .hero{grid-template-columns:1fr;padding-top:50px;}
-      .hero-visual{height:220px;}
-      .nav-links{width:100%;}
+      .wrap{padding:0 18px;}
+      .nav-inner{align-items:flex-start;flex-direction:column;position:relative;}
+      .nav-links{width:100%;justify-content:flex-start;}
+      .hero{grid-template-columns:1fr;padding-top:50px;gap:24px;}
+      .hero-visual{height:240px;}
+      .cta-row .btn{flex:1;justify-content:center;}
+      .project-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+      .showcase-img{height:200px;}
+    }
+    @media (max-width:640px){
+      .nav-inner{padding:12px;}
+      .hero{padding:44px 0 38px;}
+      .cta-row .btn{width:100%;}
+      .stat-line{flex-direction:column;align-items:flex-start;}
+      .project-grid,.feature-grid,.info-grid{grid-template-columns:1fr;}
+      .section{padding:26px 0 40px;}
+      .hero-visual{height:200px;}
     }
   </style>
 </head>
@@ -180,6 +206,7 @@
         </div>
         <nav class="nav-links">
           <a href="#projeler">Projeler</a>
+          <a href="#calismalar">Çalışmalar</a>
           <a href="#hakkinda">Hakkında</a>
           <a href="#iletisim">İletişim</a>
         </nav>
@@ -189,8 +216,8 @@
     <div class="wrap hero">
       <div>
         <p class="eyebrow">Eğitim için yalın ve akıllı ürünler</p>
-        <h1>Mihrasoft ile planlama, bütçe ve öğrenme deneyimini kolaylaştırın.</h1>
-        <p class="lead">Şu an 3 proje: Plan Kolay, Bütçe Yönetimi ve Soru Okulu. Kartlara tıklayıp detaylara ulaşabilir, uygulama veya ortaklık için iletişime geçebilirsiniz.</p>
+        <h1>Mihrasoft ile planlama, bütçe, öğrenme ve modern web vitrinlerini hızla hayata geçirin.</h1>
+        <p class="lead">Şu an 3 proje: Plan Kolay, Bütçe Yönetimi ve Soru Okulu. Landing sayfasından yönetim paneline kadar özel yazılım ve site üretimi için iletişime geçebilirsiniz.</p>
         <div class="cta-row">
           <a class="btn primary" href="#projeler" aria-label="Projeleri gör"><span>Projeleri Gör</span></a>
           <a class="btn ghost" href="mailto:baristokas@icloud.com" aria-label="E-posta ile iletişim"><span>E-posta Gönder</span></a>
@@ -199,6 +226,7 @@
           <span class="chip">Öğretmen kökenli geliştirici</span>
           <span class="chip">React / Next.js / Python</span>
           <span class="chip">AI ve eğitim teknolojileri</span>
+          <span class="chip">Modern web vitrinleri</span>
         </div>
       </div>
       <div class="hero-panel" role="img" aria-label="mihrasoft tanıtım görseli ve iletişim">
@@ -207,7 +235,7 @@
           <span class="chip">Güncel</span>
         </div>
         <div class="hero-visual">
-          <img src="images/profilj.jpg" alt="mihrasoft görseli" loading="lazy" />
+          <img src="images/dev-hero.jpg" alt="Geliştirici masaüstü ve kod ekranı" loading="lazy" />
         </div>
         <div class="stat-line">
           <span>Plan Kolay, Bütçe Yönetimi, Soru Okulu</span>
@@ -222,6 +250,37 @@
   </header>
 
   <main>
+    <section class="section wrap" id="calismalar">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Web & Ürün Geliştirme</p>
+          <h2>İlgi çekici, hızlı ve güven veren siteler</h2>
+          <p class="desc">Landing sayfaları, yönetim panelleri ve içerik sayfalarını tek elde tasarlayıp geliştiriyorum.</p>
+        </div>
+        <div class="pill">Özel tasarım + içerik</div>
+      </div>
+      <div class="showcase-grid">
+        <article class="showcase-card" role="img" aria-label="Modern landing sayfası örneği">
+          <div class="badge">Landing &amp; Ürün</div>
+          <div class="showcase-img" style="background-image:url('images/dev-showcase-1.jpg');"></div>
+          <h3>Modern landing sayfaları</h3>
+          <p class="desc">Hızlı açılış, etkili başlıklar, form/CTA akışları ve animasyonlu hero bileşenleri.</p>
+        </article>
+        <article class="showcase-card" role="img" aria-label="Yönetim paneli örneği">
+          <div class="badge">Dashboard</div>
+          <div class="showcase-img" style="background-image:url('images/dev-showcase-2.jpg');"></div>
+          <h3>Yönetim panelleri</h3>
+          <p class="desc">React/Next.js tabanlı paneller, veri görselleştirme, erişilebilir ve mobil uyumlu ekranlar.</p>
+        </article>
+        <article class="showcase-card" role="img" aria-label="İçerik odaklı sayfa örneği">
+          <div class="badge">İçerik &amp; SEO</div>
+          <div class="showcase-img" style="background-image:url('images/image.png');"></div>
+          <h3>İçerik odaklı sayfalar</h3>
+          <p class="desc">Blog, gizlilik, app-ads ve sık sorulan içerikleri düzenli bloklarla, arama motoruna uygun sunum.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section wrap" id="projeler">
       <div class="section-head">
         <div>
