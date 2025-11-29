@@ -3,212 +3,324 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>B&Ser Studio — Mobil App Developer</title>
-  <meta name="description" content="B&Ser Studio, öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar üretir." />
-  <meta name="theme-color" content="#0a84ff" />
+  <title>mihrasoft — Eğitim ve Uygulamalar</title>
+  <meta name="description" content="mihrasoft, eğitim odaklı, yalın ve kullanışlı uygulamalar geliştirir." />
+  <meta name="theme-color" content="#ff6b4a" />
+
   <!-- Open Graph -->
-  <meta property="og:title" content="B&Ser Studio" />
-  <meta property="og:description" content="Öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar." />
+  <meta property="og:title" content="mihrasoft" />
+  <meta property="og:description" content="Eğitim odaklı, yalın ve kullanışlı uygulamalar." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bagerxx.github.io/" />
-  <!-- OG/Twitter görselleri: projedeki yerel görsel -->
   <meta property="og:image" content="images/image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="images/image.png" />
-  
+
   <!-- Favicon ve uygulama simgeleri -->
-  <link rel="icon" href="images/favicon.svg?v=5" type="image/svg+xml" sizes="any" />
-  <link rel="shortcut icon" href="images/favicon.svg?v=5" type="image/svg+xml" sizes="any" />
+  <link rel="icon" href="images/favicon.svg?v=6" type="image/svg+xml" sizes="any" />
+  <link rel="shortcut icon" href="images/favicon.svg?v=6" type="image/svg+xml" sizes="any" />
   <link rel="apple-touch-icon" href="images/image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#0f172a;       /* slate-900 */
-      --bg-2:#0b1226;     /* deeper */
-      --txt:#e2e8f0;      /* slate-200 */
-      --muted:#94a3b8;    /* slate-400 */
-      --brand:#0ea5e9;    /* sky-500 */
-      --brand-2:#38bdf8;  /* sky-400 */
-      --card:#111827cc;   /* translucent */
-      --ring:#1f2937;     /* slate-800 */
-      --ok:#10b981; --warn:#f59e0b; --err:#ef4444;
+      --page:#f7f9ff;
+      --panel:rgba(255,255,255,.82);
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#5f6674;
+      --accent:#ff6b4a;
+      --accent-2:#2563eb;
+      --line:rgba(15,23,42,.08);
+      --shadow:0 24px 70px rgba(15,23,42,.08);
+      --radius:16px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--txt);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-    a{color:var(--brand);text-decoration:none}
-    a:hover{color:var(--brand-2)}
-    header{
-      position:relative; overflow:hidden;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(56,189,248,.15), transparent 60%),
-                  radial-gradient(1200px 600px at 90% -10%, rgba(14,165,233,.25), transparent 60%);
-      border-bottom:1px solid #1f2937;
-      /* Sabit navbar yüksekliğini telafi eder */
-      padding-top:96px;
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:'Plus Jakarta Sans','Space Grotesk',system-ui,-apple-system,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 1100px at 12% 10%, rgba(37,99,235,.12), transparent 48%),
+        radial-gradient(900px 900px at 82% 0%, rgba(255,107,74,.12), transparent 40%),
+        linear-gradient(135deg,#f9fbff 0%,#f6f1eb 100%);
+      min-height:100vh;
+      line-height:1.6;
+      letter-spacing:-0.01em;
+      scroll-behavior:smooth;
     }
-    .container{max-width:1080px;margin:0 auto;padding:24px}
-  /* Üst navbar: sayfa boyunca sabit kalsın */
-  .nav{
-    position:fixed; top:0; left:50%; transform:translateX(-50%);
-    width:calc(100% - 48px); max-width:1080px;
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-    z-index:1000;
-    background:rgba(11,18,38,.8);
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    border:1px solid var(--ring); border-radius:12px;
-  }
-  .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
-  .logo-mark{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;min-height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#001028;font-weight:900;white-space:nowrap}
-  .tag{font-size:12px;color:var(--muted);border:1px solid var(--ring);padding:4px 8px;border-radius:999px}
-  nav a{color:var(--txt);font-size:14px;padding:8px 10px;border-radius:10px;border:1px solid transparent}
-  nav a:hover{border-color:var(--ring)}
+    ::selection{background:rgba(255,107,74,.16);}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;height:auto;}
+    section[id]{scroll-margin-top:140px;}
 
-  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:42px 24px 56px}
-  .hero h1{font-size:42px;line-height:1.1;margin:0 0 14px}
-  .hero p{color:var(--muted);margin:0 0 22px;font-size:18px}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--ring);background:#0b1226cc;color:var(--txt);backdrop-filter:blur(6px)}
-    .btn:focus-visible{outline:2px solid var(--brand)}
-    .btn .sub{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+    .backdrop{position:fixed;inset:0;pointer-events:none;z-index:0;}
+    .orb{position:absolute;filter:blur(60px);opacity:.55;}
+    .orb-a{width:440px;height:440px;top:-120px;left:-160px;background:radial-gradient(circle at 30% 30%, rgba(37,99,235,.28), transparent 60%);}
+    .orb-b{width:420px;height:420px;bottom:-120px;right:-140px;background:radial-gradient(circle at 70% 40%, rgba(255,107,74,.32), transparent 60%);}
 
-  .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:18px}
-  .card.media{padding:0}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .grid.two{grid-template-columns:repeat(2,1fr)}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+    .masthead{padding:36px 0 30px;position:relative;z-index:2;}
+    .navbar{position:sticky;top:16px;z-index:50;}
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      background:var(--panel);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      border:1px solid var(--line);border-radius:16px;padding:14px 18px;
+      box-shadow:0 16px 46px rgba(15,23,42,.12);
+    }
+    .brand{display:flex;align-items:center;gap:12px;}
+    .brand-mark{
+      width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--accent),#ff9c5f);
+      color:#fff;font-weight:700;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;
+      box-shadow:0 18px 40px rgba(255,107,74,.26);
+    }
+    .brand-name{font-weight:700;letter-spacing:-0.02em;font-size:18px;}
+    .brand-meta{color:var(--muted);font-size:13px;}
+    .nav-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+    .nav-links a{padding:10px 12px;border-radius:12px;border:1px solid transparent;transition:all .2s;}
+    .nav-links a:hover{border-color:var(--line);background:rgba(255,255,255,.7);}
 
-    .section{padding:56px 24px}
-    .section h2{font-size:28px;margin:0 0 16px}
-    .apps .item h3{margin:8px 0 6px;font-size:18px}
-    .apps .item p{margin:0;color:var(--muted);font-size:14px}
-    /* Başlık ve ikon yan yana */
-  .title-row{display:flex;align-items:center;gap:10px;margin:8px 0 6px}
-  .title-row h3{margin:0;font-size:18px}
-  .title-row h2{margin:0;font-size:28px}
-    .title-row img{width:36px;height:36px;border-radius:8px;display:block}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:72px 0 64px;}
+    .eyebrow{margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+    h1{margin:10px 0;font-size:clamp(32px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif;}
+    p{margin:0;}
+    .lead{color:var(--muted);font-size:18px;margin-bottom:18px;}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 15px;border-radius:12px;border:1px solid var(--line);
+      font-weight:600;transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+      background:rgba(255,255,255,.82);color:var(--ink);
+    }
+    .btn:focus-visible{outline:2px solid var(--accent);}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#ff9c5f);color:#fff;border:none;box-shadow:0 18px 36px rgba(255,107,74,.26);}
+    .btn.primary:hover{transform:translateY(-1px);box-shadow:0 22px 46px rgba(255,107,74,.28);}
+    .btn.secondary{background:rgba(37,99,235,.08);border-color:rgba(37,99,235,.16);color:#0f172a;}
+    .btn.secondary:hover{transform:translateY(-1px);}
+    .btn.ghost{background:rgba(255,255,255,.7);}
+    .btn.disabled{opacity:.55;pointer-events:none;}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;padding:7px 12px;
+      border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.8);
+      color:var(--muted);font-size:13px;
+    }
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
 
-  .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
-  .pill{border:1px solid var(--ring);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:13px}
+    .hero-panel{
+      background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;
+      box-shadow:var(--shadow);display:grid;gap:14px;
+    }
+    .panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(37,99,235,.08);color:#1d2f50;font-weight:600;font-size:13px;border:1px solid rgba(37,99,235,.16);}
+    .hero-visual{position:relative;overflow:hidden;border-radius:14px;height:260px;background:#0f172a;}
+    .hero-visual img{width:100%;height:100%;object-fit:cover;}
+    .stat-line{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted);border:1px solid var(--line);padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.8);}
+    .contact{display:grid;gap:6px;font-size:14px;color:var(--muted);}
+    .contact strong{color:var(--ink);}
 
-    footer{padding:36px 24px;border-top:1px solid var(--ring);color:var(--muted)}
+    .section{padding:32px 0 54px;position:relative;z-index:1;}
+    .section + .section{border-top:1px solid rgba(15,23,42,.05);}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .section h2{margin:4px 0 10px;font-size:30px;letter-spacing:-0.02em;font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif;}
+    .desc{color:var(--muted);}
+
+    .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:16px;}
+    .project-card{
+      background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;
+      box-shadow:0 12px 40px rgba(15,23,42,.08);display:flex;flex-direction:column;gap:12px;
+    }
+    .project-top{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+    .project-card h3{margin:0;font-size:20px;}
+    .project-heading{display:flex;align-items:center;gap:10px;}
+    .project-heading h3{margin:0;font-size:20px;}
+    .project-icon{width:36px;height:36px;border-radius:12px;object-fit:cover;border:1px solid var(--line);box-shadow:0 10px 24px rgba(15,23,42,.1);}
+    .tag-row{display:flex;gap:8px;flex-wrap:wrap;}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px;}
+
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px;}
+    .feature-card{
+      background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;
+      box-shadow:0 10px 30px rgba(15,23,42,.06);color:var(--muted);font-size:15px;
+    }
+    .feature-card.highlight{background:linear-gradient(135deg,rgba(255,107,74,.12),rgba(37,99,235,.08));border-color:rgba(255,107,74,.18);}
+    .feature-card h3{margin:0 0 6px;font-size:18px;color:var(--ink);}
+    .feature-card ul{margin:8px 0 0 18px;color:var(--muted);padding:0;}
+
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+
+    footer{padding:32px 0 40px;color:var(--muted);}
+    footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 
     @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
+      .nav-inner{align-items:flex-start;flex-direction:column;}
+      .hero{grid-template-columns:1fr;padding-top:50px;}
+      .hero-visual{height:220px;}
+      .nav-links{width:100%;}
     }
-    /* Sabit navbar altında anchor'a atlayınca içerik gizlenmesin */
-    section[id]{scroll-margin-top:96px}
-    #iletisim{scroll-margin-top:96px}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="logo" aria-label="B&Ser Studio logosu">
-        <div class="logo-mark">B&Ser Studio</div>
+  <div class="backdrop" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+  </div>
+
+  <header class="masthead">
+    <div class="wrap navbar">
+      <div class="nav-inner">
+        <div class="brand" aria-label="mihrasoft logosu">
+          <div class="brand-mark">mi</div>
+          <div>
+            <div class="brand-name">mihrasoft</div>
+            <div class="brand-meta">eğitim teknolojileri</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#projeler">Projeler</a>
+          <a href="#hakkinda">Hakkında</a>
+          <a href="#iletisim">İletişim</a>
+        </nav>
       </div>
-      <nav>
-        <a href="#projeler">Projeler</a>
-        <a href="#hakkinda">Hakkında</a>
-        <a href="#iletisim">İletişim</a>
-      </nav>
     </div>
 
-    <div class="container hero">
+    <div class="wrap hero">
       <div>
-        <h1>Sade, hızlı ve faydalı eğitim odaklı uygulamalar</h1>
-        <p>Şu an 3 proje: Plan Kolay, Bütçe Yönetimi ve Soru Okulu. Aşağıdan kartlara tıklayarak bilgi alabilirsiniz.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn" href="#projeler" aria-label="Projeleri gör">
-            <strong>Projeleri Gör</strong>
-          </a>
-          <a class="btn" href="mailto:baristokas@icloud.com" aria-label="E-posta ile iletişim">
-            <strong>E-posta Gönder</strong>
-          </a>
+        <p class="eyebrow">Eğitim için yalın ve akıllı ürünler</p>
+        <h1>Mihrasoft ile planlama, bütçe ve öğrenme deneyimini kolaylaştırın.</h1>
+        <p class="lead">Şu an 3 proje: Plan Kolay, Bütçe Yönetimi ve Soru Okulu. Kartlara tıklayıp detaylara ulaşabilir, uygulama veya ortaklık için iletişime geçebilirsiniz.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#projeler" aria-label="Projeleri gör"><span>Projeleri Gör</span></a>
+          <a class="btn ghost" href="mailto:baristokas@icloud.com" aria-label="E-posta ile iletişim"><span>E-posta Gönder</span></a>
+        </div>
+        <div class="chips">
+          <span class="chip">Öğretmen kökenli geliştirici</span>
+          <span class="chip">React / Next.js / Python</span>
+          <span class="chip">AI ve eğitim teknolojileri</span>
         </div>
       </div>
-      <div class="card media" role="img" aria-label="Tanıtım görseli">
-        <img src="images/profilj.jpg" alt="B&Ser Studio görseli" style="width:100%;height:100%;object-fit:cover;border-radius:12px" loading="lazy" />
+      <div class="hero-panel" role="img" aria-label="mihrasoft tanıtım görseli ve iletişim">
+        <div class="panel-head">
+          <div class="pill">3 aktif proje</div>
+          <span class="chip">Güncel</span>
+        </div>
+        <div class="hero-visual">
+          <img src="images/profilj.jpg" alt="mihrasoft görseli" loading="lazy" />
+        </div>
+        <div class="stat-line">
+          <span>Plan Kolay, Bütçe Yönetimi, Soru Okulu</span>
+          <span style="font-weight:700;color:var(--ink)">minimal + hızlı</span>
+        </div>
+        <div class="contact">
+          <div><strong>E‑posta:</strong> <a href="mailto:baristokas@icloud.com">baristokas@icloud.com</a></div>
+          <div><strong>GitHub:</strong> <a href="https://github.com/bagerxx" target="_blank" rel="noopener">@bagerxx</a></div>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="section container apps" id="projeler">
-      <h2>Projeler</h2>
-      <div class="grid">
-        <article class="item card">
-          <div class="title-row">
-            <!-- İkon eklemek için: <img src="images/plan-kolay-ikon.png" alt="Plan Kolay ikonu" loading="lazy" /> -->
-            <h3>Plan Kolay</h3>
+    <section class="section wrap" id="projeler">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Projeler</p>
+          <h2>Odaklı, yalın ve kullanışlı</h2>
+          <p class="desc">Hızlıca deneyebileceğiniz veya yakında açılacak uygulamalar.</p>
+        </div>
+        <div class="pill">2024 odağı</div>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-top">
+            <span class="pill" style="background:rgba(255,107,74,.12);border-color:rgba(255,107,74,.3);color:#8f3419">Plan Kolay</span>
+            <span class="chip">Yakında</span>
           </div>
-          <p>Yeni Maarif Modeli ile uyumlu planlama: yıllık/haftalık plan, ölçme-değerlendirme ve içerik yönetimi. AI destekli öneriler.</p>
-          <div style="display:flex;gap:10px;margin-top:10px">
-            <a class="btn" href="#plan" aria-label="Plan detayına git"><strong>Tanıtımı Gör</strong></a>
-            <a class="btn" href="mailto:baristokas@icloud.com?subject=Plan%20uygulaması%20hakkında" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
+          <h3>Plan Kolay</h3>
+          <p class="desc">Yeni Maarif Modeli ile uyumlu planlama: yıllık/haftalık plan, ölçme-değerlendirme ve içerik yönetimi. AI destekli öneriler.</p>
+          <div class="tag-row">
+            <span class="chip">AI destekli</span>
+            <span class="chip">PDF/Paylaşım</span>
+            <span class="chip">Ölçme &amp; değerlendirme</span>
           </div>
-            <div style="display:flex;gap:10px;margin-top:10px">
-              <span class="btn" aria-disabled="true" title="Yakında" style="opacity:.6;pointer-events:none"><strong>Site (yakında)</strong></span>
-            </div>
+          <div class="actions">
+            <a class="btn secondary" href="#plan" aria-label="Plan detayına git"><span>Tanıtımı Gör</span></a>
+            <a class="btn ghost" href="mailto:baristokas@icloud.com?subject=Plan%20uygulaması%20hakkında" aria-label="E-posta ile iletişim"><span>İletişim</span></a>
+            <span class="btn disabled" aria-disabled="true" title="Yakında"><span>Site (yakında)</span></span>
+          </div>
         </article>
-        <article class="item card">
-            <div class="title-row">
-              <img src="images/bu%CC%88tce%20yonetim%20ikonu.png" alt="Bütçe Yönetimi ikonu" loading="lazy" />
-              <h3>Bütçe Yönetimi</h3>
-            </div>
-          <p>Kişisel ve aile bütçesi için sade takip: gelir‑gider, kategori analizi, hedef ve uyarılar. Offline öncelikli.</p>
-          <div style="display:flex;gap:10px;margin-top:10px">
-            <a class="btn" href="#butce" aria-label="Kolay Bütçe detayına git"><strong>Tanıtımı Gör</strong></a>
-            <a class="btn" href="mailto:baristokas@icloud.com?subject=Kolay%20B%C3%BCt%C3%A7e%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
+
+        <article class="project-card">
+          <div class="project-top">
+            <span class="pill" style="background:rgba(37,99,235,.12);border-color:rgba(37,99,235,.32);color:#12306a">Bütçe Yönetimi</span>
+            <span class="chip">Canlı</span>
           </div>
-            <div style="display:flex;gap:10px;margin-top:10px">
-              <a class="btn" href="https://finance-app-production-1c8d.up.railway.app/" target="_blank" rel="noopener" aria-label="Bütçe Yönetimi uygulamasını aç"><strong>Siteyi Aç</strong></a>
-            </div>
+          <div class="project-heading">
+            <img class="project-icon" src="images/butce-yonetim-ikonu.png" alt="Bütçe Yönetimi ikonu" loading="lazy" />
+            <h3>Bütçe Yönetimi</h3>
+          </div>
+          <p class="desc">Kişisel ve aile bütçesi için sade takip: gelir‑gider, kategori analizi, hedef ve uyarılar. Offline öncelikli.</p>
+          <div class="tag-row">
+            <span class="chip">Gelir‑gider</span>
+            <span class="chip">Hedef takibi</span>
+            <span class="chip">Offline öncelikli</span>
+          </div>
+          <div class="actions">
+            <a class="btn secondary" href="#butce" aria-label="Kolay Bütçe detayına git"><span>Tanıtımı Gör</span></a>
+            <a class="btn ghost" href="mailto:baristokas@icloud.com?subject=Kolay%20B%C3%BCt%C3%A7e%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><span>İletişim</span></a>
+            <a class="btn primary" href="https://finance-app-production-1c8d.up.railway.app/" target="_blank" rel="noopener" aria-label="Bütçe Yönetimi uygulamasını aç"><span>Siteyi Aç</span></a>
+          </div>
         </article>
-        <article class="item card">
-          <div class="title-row">
-            <!-- İkon eklemek için: <img src="images/soru-okulu-ikon.png" alt="Soru Okulu ikonu" loading="lazy" /> -->
-            <h3>Soru Okulu</h3>
+
+        <article class="project-card">
+          <div class="project-top">
+            <span class="pill" style="background:rgba(14,159,110,.14);border-color:rgba(14,159,110,.28);color:#0b513c">Soru Okulu</span>
+            <span class="chip">Hazırlık</span>
           </div>
-          <p>Öğrenciler için akıllı çalışma koçu: hedef, program, tekrar döngüsü ve mini testlerle kişisel geri bildirim.</p>
-          <div style="display:flex;gap:10px;margin-top:10px">
-            <a class="btn" href="#soru-okulu" aria-label="Soru Okulu detayına git"><strong>Tanıtımı Gör</strong></a>
-            <a class="btn" href="mailto:baristokas@icloud.com?subject=Soru%20Okulu%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><strong>İletişim</strong></a>
+          <h3>Soru Okulu</h3>
+          <p class="desc">Öğrenciler için akıllı çalışma koçu: hedef, program, tekrar döngüsü ve mini testlerle kişisel geri bildirim.</p>
+          <div class="tag-row">
+            <span class="chip">Adaptif mini test</span>
+            <span class="chip">Hedef planlama</span>
+            <span class="chip">Gelişim raporları</span>
           </div>
-            <div style="display:flex;gap:10px;margin-top:10px">
-              <span class="btn" aria-disabled="true" title="Yakında" style="opacity:.6;pointer-events:none"><strong>Site (yakında)</strong></span>
-            </div>
+          <div class="actions">
+            <a class="btn secondary" href="#soru-okulu" aria-label="Soru Okulu detayına git"><span>Tanıtımı Gör</span></a>
+            <a class="btn ghost" href="mailto:baristokas@icloud.com?subject=Soru%20Okulu%20hakk%C4%B1nda" aria-label="E-posta ile iletişim"><span>İletişim</span></a>
+            <span class="btn disabled" aria-disabled="true" title="Yakında"><span>Site (yakında)</span></span>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- Sayfa içi (anchor) detaylar: Ayrı sayfa oluşturulmadan gösterilir -->
-    <section class="section container" id="plan">
-      <h2>Plan Kolay— Kısa Tanıtım</h2>
-      <div class="grid two">
-        <div class="card">
-          <p>Öğretmenlerin pratik plan üretimi için tasarlandı. Yıllık/haftalık plan şablonları, kazanım eşleştirme ve ölçme‑değerlendirme araçları içerir.</p>
+    <section class="section wrap" id="plan">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Plan Kolay</p>
+          <h2>Kısa Tanıtım</h2>
+          <p class="desc">Öğretmenlerin pratik plan üretimi için tasarlandı. Yıllık/haftalık plan şablonları, kazanım eşleştirme ve ölçme‑değerlendirme araçları içerir.</p>
         </div>
-        <div class="card">
-          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
-            <li>Yeni Maarif Modeli ile uyumlu</li>
-            <li>AI destekli içerik önerileri</li>
-            <li>PDF/Paylaşım seçenekleri</li>
-          </ul>
-        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><p>Yeni Maarif Modeli ile uyumlu planlama, AI destekli içerik önerileri ve PDF paylaşım seçenekleri.</p></div>
+        <div class="feature-card"><ul><li>Yeni Maarif Modeli ile uyumlu</li><li>AI destekli içerik önerileri</li><li>PDF/Paylaşım seçenekleri</li></ul></div>
       </div>
     </section>
 
-    <section class="section container" id="butce">
-      <div class="title-row">
-        <img src="images/bu%CC%88tce%20yonetim%20ikonu.png" alt="Bütçe Yönetimi ikonu" loading="lazy" />
-        <h2>Bütçe Yönetimi — Kısa Tanıtım</h2>
-      </div>
-      <div class="grid two">
-        <div class="card">
-          <p>Gelir‑giderinizi zahmetsiz takip edin. Kategoriler, hedefler ve basit grafiklerle net görünürlük sağlayın.</p>
+    <section class="section wrap" id="butce">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Bütçe Yönetimi</p>
+          <h2>Kısa Tanıtım</h2>
+          <p class="desc">Gelir‑giderinizi zahmetsiz takip edin. Kategoriler, hedefler ve basit grafiklerle net görünürlük sağlayın.</p>
         </div>
-        <div class="card">
-          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card highlight"><p>Gelir-gider, hedef ve uyarılar: günlük kullanım için hızlı, offline öncelikli deneyim.</p></div>
+        <div class="feature-card">
+          <h3>Öne çıkanlar</h3>
+          <ul>
             <li>Hızlı kayıt ve akıllı kategoriler</li>
             <li>Offline öncelikli deneyim</li>
             <li>Uyarılar ve hedef takibi</li>
@@ -217,14 +329,19 @@
       </div>
     </section>
 
-    <section class="section container" id="soru-okulu">
-      <h2>Soru Okulu — Kısa Tanıtım</h2>
-      <div class="grid two">
-        <div class="card">
-          <p>Kişiselleştirilmiş çalışma koçu: düzenli tekrar, mini sınavlar ve hedef odaklı geri bildirim.</p>
+    <section class="section wrap" id="soru-okulu">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Soru Okulu</p>
+          <h2>Kısa Tanıtım</h2>
+          <p class="desc">Kişiselleştirilmiş çalışma koçu: düzenli tekrar, mini sınavlar ve hedef odaklı geri bildirim.</p>
         </div>
-        <div class="card">
-          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><p>Öğrenciye özel hedef belirleme, adaptif mini testler ve gelişim raporlarıyla sürdürülebilir çalışma disiplini.</p></div>
+        <div class="feature-card">
+          <h3>Öne çıkanlar</h3>
+          <ul>
             <li>Konulara göre hedef belirleme</li>
             <li>Adaptif mini testler</li>
             <li>Gelişim raporları</li>
@@ -233,51 +350,46 @@
       </div>
     </section>
 
-    <section class="section container" id="hakkinda">
-      <div class="grid two">
-        <div class="card">
-          <h2>Hakkında</h2>
-          <p>B&Ser Studio, öğretmen kökenli bağımsız geliştiricidir. Odak: eğitim teknolojileri, yapay zekâ ve yalın kullanıcı deneyimleri.</p>
-          <p style="color:var(--muted)">Stack: React/React Native, Next.js, NestJS, Prisma, PostgreSQL, Python.</p>
+    <section class="section wrap" id="hakkinda">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Hakkında</p>
+          <h2>mihrasoft</h2>
+          <p class="desc">Öğretmen kökenli bağımsız geliştirici. Odak: eğitim teknolojileri, yapay zekâ ve yalın kullanıcı deneyimleri.</p>
         </div>
-        <div class="card">
-          <h2 id="iletisim">İletişim</h2>
+      </div>
+      <div class="info-grid">
+        <div class="feature-card highlight">
+          <h3>Profil</h3>
+          <p>Stack: React/React Native, Next.js, NestJS, Prisma, PostgreSQL, Python.</p>
+          <p class="desc">Öncelik: eğitimi iyileştiren, hızlı çalışan, anlaşılır ürünler.</p>
+        </div>
+        <div class="feature-card" id="iletisim">
+          <h3>İletişim</h3>
           <p style="margin:0 0 10px">E‑posta: <a href="mailto:baristokas@icloud.com">baristokas@icloud.com</a></p>
-          <p style="margin:0 0 16px">GitHub: <a href="https://github.com/bagerxx" target="_blank" rel="noopener">@bagerxx</a></p>
-          <a class="btn" href="mailto:baristokas@icloud.com?subject=Merhaba" aria-label="E-posta ile iletişim">
-            <strong>E‑posta Gönder</strong>
-          </a>
+          <p style="margin:0 0 12px">GitHub: <a href="https://github.com/bagerxx" target="_blank" rel="noopener">@bagerxx</a></p>
+          <a class="btn secondary" href="mailto:baristokas@icloud.com?subject=Merhaba" aria-label="E-posta ile iletişim"><span>E‑posta Gönder</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="container">
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
-      <div>© <span id="yil"></span> B&Ser Studio</div>
+  <footer>
+    <div class="wrap">
+      <div>© <span id="yil"></span> mihrasoft</div>
       <div style="color:var(--muted)">Eğitim ve yapay zekayı buluşturan yalın ürünler.</div>
     </div>
   </footer>
 
-  <script>
-    // Küçük UX dokunuşu
-    document.getElementById('yil').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('yil').textContent = new Date().getFullYear();</script>
 
-  
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "B&Ser Studio",
-    "url": "https://bagerxx.github.io/",
-    "description": "B&Ser Studio, öğrenmeyi kolaylaştıran yapay zekâ tabanlı uygulamalar üretir.",
-    "sameAs": [
-      "https://github.com/bagerxx"
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"mihrasoft",
+    "url":"https://bagerxx.github.io/",
+    "description":"mihrasoft, eğitim odaklı, yalın ve kullanışlı uygulamalar geliştirir.",
+    "sameAs":["https://github.com/bagerxx"]
+  }</script>
 </body>
 </html>
